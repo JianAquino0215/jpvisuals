@@ -11,44 +11,28 @@ interface PageTransitionProps {
 
 const PageTransition = ({ children }: PageTransitionProps) => {
   useEffect(() => {
+    // Refresh ScrollTrigger after page transition
     const timer = setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 800);
+    }, 700); // After transition completes
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <motion.div
-      initial={{ 
-        clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)",
-        filter: "blur(0px) contrast(1) brightness(1)"
-      }}
-      animate={{ 
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        filter: "blur(0px) contrast(1) brightness(1)"
-      }}
-      exit={{ 
-        clipPath: "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)",
-        filter: "blur(0px) contrast(1) brightness(1)"
-      }}
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -100, opacity: 0 }}
       transition={{
-        duration: 0.8,
-        ease: [0.76, 0, 0.24, 1],
-        filter: {
-          duration: 0.4,
-          times: [0, 0.5, 1],
-          values: [
-            "blur(0px) contrast(1) brightness(1)",
-            "blur(2px) contrast(2) brightness(0.8)",
-            "blur(0px) contrast(1) brightness(1)"
-          ]
-        }
+        type: "tween",
+        ease: "easeInOut",
+        duration: 0.6
       }}
       onAnimationComplete={() => {
+        // Trigger ScrollFloat animations after page transition
         ScrollTrigger.refresh();
       }}
-      className="transition-pixelate"
     >
       {children}
     </motion.div>

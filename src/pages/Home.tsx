@@ -6,8 +6,7 @@ import PageTransition from "@/components/PageTransition";
 const Home = () => {
   return (
     <PageTransition>
-
-      <div className="relative z-10 min-h-screen">
+      <div className="min-h-screen bg-section-gradient">
         <Navigation />
         <main>
           <Hero />
