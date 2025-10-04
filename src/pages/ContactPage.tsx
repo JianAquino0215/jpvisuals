@@ -5,7 +5,7 @@ import PageTransition from "@/components/PageTransition";
 const ContactPage = () => {
   return (
     <PageTransition>
-      <div className="min-h-screen bg-section-gradient">
+      <div className="min-h-screen">
         <Navigation />
         <main>
           <Contact />
