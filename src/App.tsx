@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import DarkVeil from "@/components/DarkVeil";
+import Noise from "@/components/Noise";
 import "@/utils/stayAlive";
 import Home from "./pages/Home";
 import SkillsPage from "./pages/SkillsPage";
@@ -62,6 +63,13 @@ const App = () => {
       <TooltipProvider>
         <div className="fixed inset-0 z-0">
           <DarkVeil />
+          <Noise
+            patternSize={250}
+            patternScaleX={1}
+            patternScaleY={1}
+            patternRefreshInterval={2}
+            patternAlpha={15}
+          />
         </div>
         <div className="relative z-10">
           <Toaster />

@@ -8,7 +8,8 @@ import DecryptedText from "./DecryptedText";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <>
+    <section className="relative min-h-screen flex items-center justify-end overflow-hidden pr-20">
 
       
       {/* Floating Elements */}
@@ -17,8 +18,11 @@ const Hero = () => {
       <div className="absolute bottom-32 left-40 w-1 h-1 bg-primary rounded-full animate-pulse delay-500"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+      <div className="relative z-10 text-right px-4 max-w-4xl mt-20">
         <div className="mb-6 relative">
+          <div className="mb-2" style={{position: 'relative', display: 'inline-block', width: '780px', margin: '0 auto'}}>
+            <span className="text-3xl font-bold text-muted-foreground" style={{position: 'absolute', left: '80px', top: '-30px'}}>HI! I'M</span>
+          </div>
           <div className="mb-6">
             <div style={{position: 'relative', display: 'inline-block', width: '780px', margin: '0 auto'}}>
               <FuzzyText 
@@ -43,10 +47,10 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6"></div>
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent ml-auto mb-6"></div>
         </div>
         
-        <div className="mb-8 text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed">
+        <div className="mb-8 text-lg md:text-xl text-white max-w-2xl ml-auto leading-relaxed">
           <DecryptedText
             text="Multimedia Artist • Web Developer • Game Developer"
             animateOn="view"
@@ -65,13 +69,27 @@ const Hero = () => {
           scrollEnd="bottom bottom-=20%"
           stagger={0.02}
           containerClassName="mb-12"
-          textClassName="text-lg text-muted-foreground max-w-3xl mx-auto"
+          textClassName="text-lg text-muted-foreground max-w-3xl ml-auto"
         >
           Crafting immersive digital experiences through code, design, and interactive storytelling. From web applications to game worlds, I bring creative visions to life.
         </ScrollFloat>
-        <div className="mt-16">
+        
+      </div>
+      
+    </section>
+    
+    {/* CurvedLoop Section */}
+    <section className="py-16">
+      <div className="max-w-6xl mx-auto text-center">
+        <div className="scale-75">
           <CurvedLoop marqueeText="Made over ✦ 200+ outputs ✦ for clients ✦ across the globe ✦" />
         </div>
+      </div>
+    </section>
+    
+    {/* Buttons Section */}
+    <section className="pb-20">
+      <div className="max-w-6xl mx-auto text-center">
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-700">
           <Link to="/portfolio">
             <Button 
@@ -91,18 +109,9 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
-        
-        
-        
       </div>
-      
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2"></div>
-        </div>
-      </div> */}
     </section>
+    </>
   );
 };
 
