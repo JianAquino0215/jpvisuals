@@ -574,8 +574,20 @@ const MagicBento: React.FC<BentoProps> = ({
           }
           
           .card-responsive {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 1rem;
+          }
+          
+          @media (min-width: 768px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          
+          @media (min-width: 1024px) {
+            .card-responsive {
+              grid-template-columns: repeat(3, 1fr);
+            }
           }
           
           .card-responsive.single {
@@ -667,7 +679,7 @@ const MagicBento: React.FC<BentoProps> = ({
         <BentoCardGrid gridRef={gridRef}>
           <div className="card-responsive grid gap-4">
             {(cardType === 'skills' ? skillsData : toolsData).map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[300px] w-full max-w-full p-8 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[250px] md:min-h-[300px] w-full max-w-full p-4 md:p-8 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
             }`;
 

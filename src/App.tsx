@@ -15,6 +15,7 @@ import PortfolioPage from "./pages/PortfolioPage";
 import ContactPage from "./pages/ContactPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +79,7 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <AnimatedRoutes />
+            <Footer />
           </BrowserRouter>
         </div>
       </TooltipProvider>
