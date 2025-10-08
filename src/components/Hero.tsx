@@ -6,13 +6,14 @@ import CurvedLoop from "./CurvedLoop";
 import FuzzyText from "./FuzzyText";
 import DecryptedText from "./DecryptedText";
 import ModelViewer from "./ModelViewer";
+import MobileTitle from "./MobileTitle";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Model Viewer - Left Side */}
       <div 
-        className="absolute bottom-85 transform translate-y-1/4 z-10"
+        className="absolute bottom-85 transform translate-y-1/4 z-10 hidden md:block"
         style={{ left: '-38rem', top: '-45rem' }}
         
         onMouseEnter={() => document.body.style.overflow = 'hidden'}
@@ -37,44 +38,51 @@ const Hero = () => {
       <div className="absolute bottom-32 left-40 w-1 h-1 bg-primary rounded-full animate-pulse delay-500"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-right px-4 max-w-4xl ml-auto mr-8 mt-20">
+      <div className="relative z-10 text-center md:text-right px-4 max-w-4xl mx-auto md:ml-auto md:mr-8 mt-20">
         <div className="mb-6 relative">
           <div className="mb-6">
-            <div style={{position: 'relative', display: 'inline-block', width: '780px', margin: '0'}}>
-              <FuzzyText 
-                baseIntensity={0.2} 
-                hoverIntensity={0.5} 
-                enableHover={true}
-                fontFamily="'Midnight Gelactic', sans-serif"
-                color="#87CEEB"
-              >
-                Jian
-              </FuzzyText>
-              <div style={{position: 'absolute', top: '0', left: '260px'}}>
+            <div className="w-full max-w-[90vw] md:max-w-[780px] mx-auto md:mx-0 overflow-hidden">
+              {/* Mobile Title */}
+              <div className="md:hidden">
+                <MobileTitle />
+              </div>
+              {/* Desktop Title */}
+              <div className="hidden md:flex items-center justify-start ml-8">
                 <FuzzyText 
                   baseIntensity={0.2} 
                   hoverIntensity={0.5} 
                   enableHover={true}
                   fontFamily="'Midnight Gelactic', sans-serif"
-                  color="#fff"
+                  color="#87CEEB"
                 >
-                  Aquino
+                  Jian
                 </FuzzyText>
+                <span className="-ml-32 mt-5">
+                  <FuzzyText 
+                    baseIntensity={0.2} 
+                    hoverIntensity={0.5} 
+                    enableHover={true}
+                    fontFamily="'Midnight Gelactic', sans-serif"
+                    color="#fff"
+                  >
+                    Aquino
+                  </FuzzyText>
+                </span>
               </div>
             </div>
           </div>
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent ml-auto mb-6"></div>
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto md:ml-auto mb-6"></div>
         </div>
         
-        <div className="mb-8 text-lg md:text-xl text-white max-w-2xl ml-auto leading-relaxed">
+        <div className="mb-8 text-base md:text-lg lg:text-xl text-white max-w-[90vw] md:max-w-2xl mx-auto md:ml-auto leading-relaxed px-4 md:px-0">
           <DecryptedText
             text="Multimedia Artist • Web Developer • Game Developer"
             animateOn="view"
             sequential={true}
             revealDirection="center"
             speed={100}
-            className="text-lg md:text-xl text-white whitespace-nowrap"
-            parentClassName="text-lg md:text-xl text-white whitespace-nowrap"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white"
+            parentClassName="text-sm sm:text-base md:text-lg lg:text-xl text-white"
           />
         </div>
         
@@ -85,7 +93,7 @@ const Hero = () => {
           scrollEnd="bottom bottom-=20%"
           stagger={0.02}
           containerClassName="mb-12"
-          textClassName="text-lg text-muted-foreground max-w-3xl ml-auto text-right"
+          textClassName="text-base md:text-lg text-muted-foreground max-w-[90vw] md:max-w-3xl mx-auto md:ml-auto text-center md:text-right px-4 md:px-0"
         >
           Crafting immersive digital experiences through code, design, and interactive storytelling. From web applications to game worlds, I bring creative visions to life.
         </ScrollFloat>
