@@ -5,6 +5,9 @@ import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import PastClients from "@/components/PastClients";
 import DarkVeil from "@/components/DarkVeil";
+import CurvedLoop from "@/components/CurvedLoop";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -18,6 +21,31 @@ const Index = () => {
         <div id="home">
           <Hero />
         </div>
+        
+        <section className="py-16 flex flex-col items-center justify-center relative z-20 bg-black/20">
+          <div className="mb-8">
+            <CurvedLoop marqueeText="Made over ✦ 200+ outputs ✦ for clients ✦ across the globe ✦" />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-700">
+            <Link to="/portfolio">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow transition-all duration-300 hover:scale-105"
+              >
+                View My Works :0
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105"
+              >
+                Create w/ Me ;)
+              </Button>
+            </Link>
+          </div>
+        </section>
         
         <div id="clients">
           <PastClients />

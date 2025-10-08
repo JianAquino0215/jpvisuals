@@ -5,10 +5,29 @@ import ScrollFloat from "./ScrollFloat";
 import CurvedLoop from "./CurvedLoop";
 import FuzzyText from "./FuzzyText";
 import DecryptedText from "./DecryptedText";
+import ModelViewer from "./ModelViewer";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Model Viewer - Left Side */}
+      <div 
+        className="absolute bottom-85 transform translate-y-1/4 z-10"
+        style={{ left: '-38rem', top: '-45rem' }}
+        
+        onMouseEnter={() => document.body.style.overflow = 'hidden'}
+        onMouseLeave={() => document.body.style.overflow = 'auto'}
+      >
+        <ModelViewer
+          url="/hechosetobehappy.fbx.glb"
+          width={1800}
+          height={1800}
+          autoRotate={true}
+          autoRotateSpeed={0.3}
+          defaultZoom={2.5}
+          enableManualZoom={false}
+        />
+      </div>
 
       
       {/* Floating Elements */}
@@ -17,10 +36,10 @@ const Hero = () => {
       <div className="absolute bottom-32 left-40 w-1 h-1 bg-primary rounded-full animate-pulse delay-500"></div>
       
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+      <div className="relative z-10 text-right px-4 max-w-4xl ml-auto mr-8 mt-20">
         <div className="mb-6 relative">
           <div className="mb-6">
-            <div style={{position: 'relative', display: 'inline-block', width: '780px', margin: '0 auto'}}>
+            <div style={{position: 'relative', display: 'inline-block', width: '780px', margin: '0'}}>
               <FuzzyText 
                 baseIntensity={0.2} 
                 hoverIntensity={0.5} 
@@ -43,10 +62,10 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-6"></div>
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent ml-auto mb-6"></div>
         </div>
         
-        <div className="mb-8 text-lg md:text-xl text-white max-w-2xl mx-auto leading-relaxed">
+        <div className="mb-8 text-lg md:text-xl text-white max-w-2xl ml-auto leading-relaxed">
           <DecryptedText
             text="Multimedia Artist • Web Developer • Game Developer"
             animateOn="view"
@@ -65,14 +84,16 @@ const Hero = () => {
           scrollEnd="bottom bottom-=20%"
           stagger={0.02}
           containerClassName="mb-12"
-          textClassName="text-lg text-muted-foreground max-w-3xl mx-auto"
+          textClassName="text-lg text-muted-foreground max-w-3xl ml-auto text-right"
         >
           Crafting immersive digital experiences through code, design, and interactive storytelling. From web applications to game worlds, I bring creative visions to life.
         </ScrollFloat>
-        <div className="mt-16">
+
+
+        <div className="mb-8">
           <CurvedLoop marqueeText="Made over ✦ 200+ outputs ✦ for clients ✦ across the globe ✦" />
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-700">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/portfolio">
             <Button 
               size="lg" 
@@ -91,9 +112,6 @@ const Hero = () => {
             </Button>
           </Link>
         </div>
-        
-        
-        
       </div>
       
       {/* Scroll Indicator */}

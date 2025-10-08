@@ -61,7 +61,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="fixed inset-0 z-0">
+        <div className="fixed inset-0 z-0 -bottom-96">
           <DarkVeil hueShift={10} />
         </div>
         <div className="fixed inset-0 z-5">
