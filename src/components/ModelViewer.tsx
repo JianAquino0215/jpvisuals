@@ -149,11 +149,15 @@ const ModelInner: FC<ModelInnerProps> = ({
     g.position.set(-sphere.center.x, -sphere.center.y, -sphere.center.z);
     g.scale.setScalar(s);
 
-    // Play all animations
+    // Play all animations with error handling
     Object.values(actions).forEach((action) => {
       if (action) {
-        console.log('Playing action:', action.getClip().name);
-        action.reset().play();
+        try {
+          console.log('Playing action:', action.getClip().name);
+          action.reset().play();
+        } catch (error) {
+          console.warn('Animation error:', error);
+        }
       }
     });
 
@@ -262,18 +266,29 @@ const ModelViewer: FC<ViewerProps> = ({
       <Canvas
         shadows
         frameloop="always"
-        gl={{ preserveDrawingBuffer: true }}
+        gl={{ 
+          preserveDrawingBuffer: true,
+          powerPreference: 'high-performance',
+          antialias: true,
+          alpha: true
+        }}
         camera={{ fov: 50, position: [0, 0, camZ], near: 0.01, far: 100 }}
         style={{ touchAction: 'pan-y pinch-zoom' }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener('webglcontextlost', (e) => {
+            e.preventDefault();
+          });
+          gl.domElement.addEventListener('webglcontextrestored', () => {
+            // Force re-render after context restore
+            invalidate();
+          });
+        }}
       >
         {environmentPreset !== 'none' && <Environment preset={environmentPreset as any} background={false} />}
-
         <ambientLight intensity={ambientIntensity} />
         <directionalLight position={[5, 5, 5]} intensity={keyLightIntensity} castShadow />
         <directionalLight position={[-5, 2, 5]} intensity={fillLightIntensity} />
         <directionalLight position={[0, 4, -5]} intensity={rimLightIntensity} />
-
-        <ContactShadows position={[0, -0.5, 0]} opacity={0.35} scale={10} blur={2} />
 
         <Suspense fallback={<Loader placeholderSrc={placeholderSrc} />}>
           <ModelInner

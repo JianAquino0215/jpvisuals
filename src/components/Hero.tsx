@@ -19,6 +19,7 @@ const Hero = () => {
         onMouseLeave={() => document.body.style.overflow = 'auto'}
       >
         <ModelViewer
+          key={Date.now()}
           url="/hechosetobehappy.fbx.glb"
           width={1800}
           height={1800}
